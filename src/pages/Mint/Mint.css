@@ -1,0 +1,44 @@
+.create {
+  margin: 2rem;  
+}
+
+.create_head {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.create_form {
+  display: flex;
+  flex-direction: column;  
+}
+
+.field_label {
+  font-size: 20px;  
+  margin: 10px 0;
+}
+
+.create_form input {
+  width: 700px;
+  padding: 10px 20px;
+  font-family: monospace;
+  outline: none;
+  border: 1px solid blueviolet;
+  border-radius: 5px;
+}
+
+.create_form textarea {
+  width: 700px;
+  height: 100px;
+  padding: 10px 20px;
+  font-family: monospace;
+  outline: none;
+  border: 1px solid blueviolet;
+  border-radius: 5px;
+}
+
+.create_form button {
+  width: 90px;
+  height: 40px;
+  margin-top: 40px;
+  border-radius: 10px;
+}

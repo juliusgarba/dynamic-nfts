@@ -1,0 +1,33 @@
+.nfts {
+  padding: 25px;
+}
+
+.nfts-container_text {
+  padding-left: 50px;
+}
+
+.nfts-container_text h1 {
+  font-size: 40px;
+}
+
+.nfts-container_cards {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 18px;
+  min-height: 82vh;
+}
+
+.nft-card {
+  height: 430px;
+  width: 430px;
+  margin: 16px;
+  display: flex;
+  flex-direction: column;      
+  border: solid 5px blueviolet;
+  flex-wrap: wrap;
+}
+
+.nft-card img {
+  height: 100%;
+  width: 100%;  
+}
