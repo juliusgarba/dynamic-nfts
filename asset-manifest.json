@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/super-tokens/static/css/main.4b47a221.chunk.css",
+    "main.js": "/super-tokens/static/js/main.fcb2b7bc.chunk.js",
+    "main.js.map": "/super-tokens/static/js/main.fcb2b7bc.chunk.js.map",
+    "runtime-main.js": "/super-tokens/static/js/runtime-main.cac01b26.js",
+    "runtime-main.js.map": "/super-tokens/static/js/runtime-main.cac01b26.js.map",
+    "static/css/2.e70b8a41.chunk.css": "/super-tokens/static/css/2.e70b8a41.chunk.css",
+    "static/js/2.bf1e2441.chunk.js": "/super-tokens/static/js/2.bf1e2441.chunk.js",
+    "static/js/2.bf1e2441.chunk.js.map": "/super-tokens/static/js/2.bf1e2441.chunk.js.map",
+    "index.html": "/super-tokens/index.html",
+    "static/css/2.e70b8a41.chunk.css.map": "/super-tokens/static/css/2.e70b8a41.chunk.css.map",
+    "static/css/main.4b47a221.chunk.css.map": "/super-tokens/static/css/main.4b47a221.chunk.css.map",
+    "static/js/2.bf1e2441.chunk.js.LICENSE.txt": "/super-tokens/static/js/2.bf1e2441.chunk.js.LICENSE.txt",
+    "static/media/angry_emoji.e7990ec3.jpg": "/super-tokens/static/media/angry_emoji.e7990ec3.jpg",
+    "static/media/happy_emoji.d0733d62.webp": "/super-tokens/static/media/happy_emoji.d0733d62.webp",
+    "static/media/like_emoji.699dd64f.png": "/super-tokens/static/media/like_emoji.699dd64f.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cac01b26.js",
+    "static/css/2.e70b8a41.chunk.css",
+    "static/js/2.bf1e2441.chunk.js",
+    "static/css/main.4b47a221.chunk.css",
+    "static/js/main.fcb2b7bc.chunk.js"
+  ]
+}
