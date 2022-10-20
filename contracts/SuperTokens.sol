@@ -31,6 +31,19 @@ contract SuperTokens is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
 
     constructor() ERC721("Super Tokens", "SUT") {}
 
+    modifier validTokenId(uint _tokenId){
+        require(
+            _tokenId < _tokenIdCounter.current(),
+            "Invalid token ID entered"
+        );
+        _;
+    }
+
+    modifier notOwner(uint _tokenId){
+        require(ownerOf(_tokenId) != msg.sender, "owner can't perform this action");
+        _;
+    }
+
     function mint(string memory _tokenURI, uint256 id) private {
         _safeMint(msg.sender, id);
         _setTokenURI(id, _tokenURI);
@@ -48,7 +61,7 @@ contract SuperTokens is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
     }
 
     // Add a reaction to a token
-    function addReaction(uint256 tokenId, uint256 reactionId) public {
+    function addReaction(uint256 tokenId, uint256 reactionId) public validTokenId(tokenId) notOwner(tokenId){
         // 1 - Like reaction
         // 2 - Happy reaction
         // 3 - Angry reaction
@@ -57,16 +70,24 @@ contract SuperTokens is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
             reactionId == 1 || reactionId == 2 || reactionId == 3,
             "Invalid reaction entered"
         );
-        require(
-            tokenId < _tokenIdCounter.current(),
-            "Invalid token ID entered"
-        );
-        require(
-            reactions[tokenId][msg.sender] == 0,
-            "Already reacted to this token"
-        );
 
+        uint currentReaction =  reactions[tokenId][msg.sender];
         Token storage token = tokens[tokenId];
+
+        require(currentReaction != reactionId, "already reacted");
+
+        //First remove the current reaction
+        if(currentReaction != 0){
+            if (currentReaction == 1) {
+                token.likeCount -= 1;
+            } else if (currentReaction == 2) {
+                token.happyCount -= 1;
+            } else if (currentReaction == 3) {
+                token.angryCount -= 1;
+            }
+        }
+
+        //Then add the new reaction
         if (reactionId == 1) {
             token.likeCount += 1;
         } else if (reactionId == 2) {
@@ -79,12 +100,9 @@ contract SuperTokens is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
         reactions[tokenId][msg.sender] = reactionId;
     }
 
-    // Add a new comment to token
-    function addComment(uint256 tokenId, string calldata content) public {
-        require(
-            tokenId < _tokenIdCounter.current(),
-            "Invalid token ID entered"
-        );
+    // Add a new comment to tokens
+    function addComment(uint256 tokenId, string calldata content) public validTokenId(tokenId) notOwner(tokenId){
+        require(bytes(content).length > 0, "invalid comment");
         Token storage token = tokens[tokenId];
         Comment memory newComment = Comment(msg.sender, content);
         comments[tokenId].push(newComment);
@@ -128,11 +146,7 @@ contract SuperTokens is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
     }
 
     // Check which reaction a user made on a token character
-    function whichReaction(uint256 _tokenId) public view returns (uint256) {
-        require(
-            _tokenId < _tokenIdCounter.current(),
-            "Invalid token ID entered"
-        );
+    function whichReaction(uint256 _tokenId) public view validTokenId(_tokenId) returns (uint256){
         return reactions[_tokenId][msg.sender];
     }
 
